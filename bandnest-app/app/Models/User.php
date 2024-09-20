@@ -19,9 +19,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'firstname',
+        'lastname',
+        'date_of_birth',
         'email',
         'password',
+        'profile_photo',
     ];
 
     /**
@@ -45,5 +49,29 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the bands associated with the users.
+     */
+    public function bands()
+    {
+        return $this->belongsToMany(Band::class, 'user_bands');
+    }
+
+    /**
+     * Get the structures associated with the users.
+     */
+    public function structures()
+    {
+        return $this->hasMany(Structure::class);
+    }
+
+    /**
+     * Get the bookings associated with the users.
+     */
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
     }
 }

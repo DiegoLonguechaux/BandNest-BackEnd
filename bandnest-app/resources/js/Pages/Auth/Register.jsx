@@ -7,7 +7,10 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
+        username: '',
+        fisrtname: '',
+        lastname: '',
+        date_of_birth: '',
         email: '',
         password: '',
         password_confirmation: '',
@@ -27,20 +30,72 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="username" value="Username" />
 
                     <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
+                        id="username"
+                        name="username"
+                        value={data.username}
                         className="mt-1 block w-full"
-                        autoComplete="name"
+                        autoComplete="username"
                         isFocused={true}
-                        onChange={(e) => setData('name', e.target.value)}
+                        onChange={(e) => setData('username', e.target.value)}
                         required
                     />
 
-                    <InputError message={errors.name} className="mt-2" />
+                    <InputError message={errors.username} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="firstname" value="Firstname" />
+
+                    <TextInput
+                        id="firstname"
+                        name="firstname"
+                        value={data.firstname}
+                        className="mt-1 block w-full"
+                        autoComplete="firstname"
+                        isFocused={true}
+                        onChange={(e) => setData('firstname', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.firstname} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="lastname" value="Lastname" />
+
+                    <TextInput
+                        id="lastname"
+                        name="lastname"
+                        value={data.lastname}
+                        className="mt-1 block w-full"
+                        autoComplete="lastname"
+                        isFocused={true}
+                        onChange={(e) => setData('lastname', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.lastname} className="mt-2" />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="date_of_birth" value="Date of birth" />
+
+                    <TextInput
+                        id="date_of_birth"
+                        type="date"
+                        name="date_of_birth"
+                        value={data.date_of_birth}
+                        className="mt-1 block w-full"
+                        autoComplete="firstname"
+                        isFocused={true}
+                        onChange={(e) => setData('date_of_birth', e.target.value)}
+                        required
+                    />
+
+                    <InputError message={errors.date_of_birth} className="mt-2" />
                 </div>
 
                 <div className="mt-4">

@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('bands', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description');
+            $table->text('logo');
             $table->timestamps();
+            $table->timestamp('deleted_at')->nullable();
         });
     }
 
