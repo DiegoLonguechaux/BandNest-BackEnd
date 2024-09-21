@@ -12,7 +12,7 @@ return [
     |
     */
     'user' => [
-        'name_column' => 'username',
+        'name_column' => 'name',
     ],
 
     /*

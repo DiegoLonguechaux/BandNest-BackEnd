@@ -7,9 +7,12 @@ use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Filament\Tables\Columns\ImageColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
@@ -23,16 +26,23 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('username'),
+                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('firstname'),
+                Forms\Components\TextInput::make('lastname'),
+                Forms\Components\DatePicker::make('date_of_birth'),
+                Forms\Components\TextInput::make('email'),
+                Forms\Components\FileUpload::make('profile_photo'),
             ]);
     }
 
     public static function table(Table $table): Table
     {
         return $table
-            ->columns([
-                Tables\Columns\TextColumn::make('username')->sortable(),
+            ->columns([ 
+                Tables\Columns\ImageColumn::make('profile_photo')->circular(),
+                Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TextColumn::make('firstname')->sortable(),
+                Tables\Columns\TextColumn::make('lastname')->sortable(),
                 Tables\Columns\TextColumn::make('email')->sortable(),
             ])
             ->filters([
