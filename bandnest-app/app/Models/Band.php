@@ -5,7 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use ApiPlatform\Metadata\ApiResource;
 
+#[ApiResource]
 class Band extends Model
 {
     use HasFactory, SoftDeletes;
@@ -37,6 +39,6 @@ class Band extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_band');
+        return $this->belongsToMany(User::class, 'user_bands');
     }
 }

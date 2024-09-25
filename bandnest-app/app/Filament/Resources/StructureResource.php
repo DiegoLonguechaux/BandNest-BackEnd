@@ -23,7 +23,28 @@ class StructureResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('description'),
+                Forms\Components\TextInput::make('address'),
+                Forms\Components\TextInput::make('city'),
+                Forms\Components\TextInput::make('zip_code'),
+                Forms\Components\Select::make('owner_id')
+                    ->relationship('owner', 'firstname', function ($query) {
+                        return $query->select(['id', 'firstname', 'lastname']);
+                    })
+                    ->getOptionLabelFromRecordUsing(fn ($record) => $record->firstname . ' ' . $record->lastname) // Concatenate firstname and lastname
+                    ->required()
+                    ->label('Owner'),
+                Forms\Components\Select::make('country_id')
+                    ->relationship('country', 'name')
+                    ->required()
+                    ->label('Country'),
+                Forms\Components\Select::make('rooms')
+                    ->multiple()
+                    ->relationship('rooms', 'name')                 
+                    ->searchable()
+                    ->preload()
+                    ->label('Rooms'),
             ]);
     }
 
@@ -31,7 +52,14 @@ class StructureResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('name')->sortable(),
+                Tables\Columns\TextColumn::make('owner.name')
+                    ->label('Owner'),
+                Tables\Columns\TextColumn::make('address')->sortable(),
+                Tables\Columns\TextColumn::make('city')->sortable(),
+                Tables\Columns\TextColumn::make('zip_code')->sortable(),
+                Tables\Columns\TextColumn::make('country.name')
+                    ->label('Country'),
             ])
             ->filters([
                 //
