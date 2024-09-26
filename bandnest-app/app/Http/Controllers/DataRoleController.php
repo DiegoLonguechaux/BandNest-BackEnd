@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Equipment;
+use App\Models\DataRole;
 use Illuminate\Http\Request;
 
-class EquipmentController extends Controller
+class DataRoleController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class EquipmentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Equipment $equipment)
+    public function show(DataRole $dataRole)
     {
         //
     }
@@ -42,7 +42,7 @@ class EquipmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Equipment $equipment)
+    public function edit(DataRole $dataRole)
     {
         //
     }
@@ -50,7 +50,7 @@ class EquipmentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Equipment $equipment)
+    public function update(Request $request, DataRole $dataRole)
     {
         //
     }
@@ -58,7 +58,7 @@ class EquipmentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Equipment $equipment)
+    public function destroy(DataRole $dataRole)
     {
         //
     }

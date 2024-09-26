@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Countries;
+use App\Models\OperatingHour;
 use Illuminate\Http\Request;
 
-class CountriesController extends Controller
+class OperatingHourController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class CountriesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Countries $countries)
+    public function show(OperatingHour $operatingHour)
     {
         //
     }
@@ -42,7 +42,7 @@ class CountriesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Countries $countries)
+    public function edit(OperatingHour $operatingHour)
     {
         //
     }
@@ -50,7 +50,7 @@ class CountriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Countries $countries)
+    public function update(Request $request, OperatingHour $operatingHour)
     {
         //
     }
@@ -58,7 +58,7 @@ class CountriesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Countries $countries)
+    public function destroy(OperatingHour $operatingHour)
     {
         //
     }

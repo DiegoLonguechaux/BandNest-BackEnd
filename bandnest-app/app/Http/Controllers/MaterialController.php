@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OperatingHours;
+use App\Models\Material;
 use Illuminate\Http\Request;
 
-class OperatingHoursController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class OperatingHoursController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OperatingHours $operatingHours)
+    public function show(Material $material)
     {
         //
     }
@@ -42,7 +42,7 @@ class OperatingHoursController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OperatingHours $operatingHours)
+    public function edit(Material $material)
     {
         //
     }
@@ -50,7 +50,7 @@ class OperatingHoursController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, OperatingHours $operatingHours)
+    public function update(Request $request, Material $material)
     {
         //
     }
@@ -58,7 +58,7 @@ class OperatingHoursController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(OperatingHours $operatingHours)
+    public function destroy(Material $material)
     {
         //
     }

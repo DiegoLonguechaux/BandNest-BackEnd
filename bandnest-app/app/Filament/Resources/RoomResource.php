@@ -27,6 +27,50 @@ class RoomResource extends Resource
                 Forms\Components\TextInput::make('size'),
                 Forms\Components\TextInput::make('description'),
                 Forms\Components\TextInput::make('price_per_hour'),
+                Forms\Components\Select::make('structure_id')
+                    ->relationship('structure', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->label('Structure'),
+                Forms\Components\Select::make('materials')
+                    ->multiple()
+                    ->relationship('materials', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->label('Materials'),
+                Forms\Components\Repeater::make('operating_hours')
+                    ->relationship('operatingHours')
+                    ->schema([
+                        Forms\Components\Select::make('day')
+                            ->options([
+                                'monday' => 'Monday',
+                                'tuesday' => 'Tuesday',
+                                'wednesday' => 'Wednesday',
+                                'thursday' => 'Thursday',
+                                'friday' => 'Friday',
+                                'saturday' => 'Saturday',
+                                'sunday' => 'Sunday',
+                            ])
+                            ->required()
+                            ->label('Day'),
+
+                        Forms\Components\TimePicker::make('start')
+                            ->required()
+                            ->withoutSeconds()
+                            ->label('Start At'),
+
+                        Forms\Components\TimePicker::make('end')
+                            ->required()
+                            ->withoutSeconds()
+                            ->label('End At'),
+                    ])
+                    ->columns(3)
+                    ->columnSpan('full')
+                    ->label('Opening Hours')
+                    ->createItemButtonLabel('Add Day')
+                    ->collapsed(false),
             ]);
     }
 

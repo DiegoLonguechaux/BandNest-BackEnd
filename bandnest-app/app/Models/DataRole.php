@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class OperatingHours extends Model
+class DataRole extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,8 @@ class OperatingHours extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'room_id',
-        'day',
-        'start',
-        'end',
+        'name',
+        'slug',
     ];
 
     /**
@@ -27,17 +25,7 @@ class OperatingHours extends Model
      * @var array<string, string>
      */
     protected $casts = [
-        'start' => 'datetime:H:i',
-        'end' => 'datetime:H:i',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-
-    /**
-     * Get the room associated with the operating hour.
-     */
-    public function room()
-    {
-        return $this->belongsTo(Room::class);
-    }
 }

@@ -63,18 +63,18 @@ class Room extends Model
     }
 
     /**
-     * Get the equipments associated with the room.
-     */
-    public function equipments()
-    {
-        return $this->belongsToMany(Equipment::class, 'room_equipments');
-    }
-
-    /**
      * Get the operating hours associated with the room.
      */
     public function operatingHours()
     {
-        return $this->hasMany(OperatingHours::class);
+        return $this->hasMany(OperatingHour::class);
+    }
+
+    /**
+     * Get the materials associated with the room.
+     */
+    public function materials()
+    {
+        return $this->belongsToMany(Material::class, 'room_materials');
     }
 }

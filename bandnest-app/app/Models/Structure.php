@@ -51,7 +51,7 @@ class Structure extends Model
      */
     public function country()
     {
-        return $this->belongsTo(Countries::class, 'country_id');
+        return $this->belongsTo(Countrie::class, 'country_id');
     }
 
     /**

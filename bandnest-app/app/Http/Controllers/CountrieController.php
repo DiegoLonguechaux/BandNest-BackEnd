@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataRoles;
+use App\Models\Countrie;
 use Illuminate\Http\Request;
 
-class DataRolesController extends Controller
+class CountrieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +34,7 @@ class DataRolesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(DataRoles $dataRoles)
+    public function show(Countrie $countrie)
     {
         //
     }
@@ -42,7 +42,7 @@ class DataRolesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DataRoles $dataRoles)
+    public function edit(Countrie $countrie)
     {
         //
     }
@@ -50,7 +50,7 @@ class DataRolesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DataRoles $dataRoles)
+    public function update(Request $request, Countrie $countrie)
     {
         //
     }
@@ -58,7 +58,7 @@ class DataRolesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DataRoles $dataRoles)
+    public function destroy(Countrie $countrie)
     {
         //
     }

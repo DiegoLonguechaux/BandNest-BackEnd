@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Countries extends Model
+class OperatingHour extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,10 @@ class Countries extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'room_id',
+        'day',
+        'start',
+        'end',
     ];
 
     /**
@@ -24,15 +27,17 @@ class Countries extends Model
      * @var array<string, string>
      */
     protected $casts = [
+        'start' => 'datetime:H:i',
+        'end' => 'datetime:H:i',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
 
     /**
-     * Get the users associated with the country.
+     * Get the room associated with the operating hour.
      */
-    public function structures()
+    public function room()
     {
-        return $this->hasMany(Structure::class);
+        return $this->belongsTo(Room::class);
     }
 }

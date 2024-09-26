@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DataRoles extends Model
+class Material extends Model
 {
     use HasFactory;
 
@@ -16,7 +16,7 @@ class DataRoles extends Model
      */
     protected $fillable = [
         'name',
-        'slug',
+        'state',
     ];
 
     /**
@@ -28,4 +28,9 @@ class DataRoles extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
+    public function rooms()
+    {
+        return $this->belongsToMany(Room::class, 'room_materials');
+    }
 }

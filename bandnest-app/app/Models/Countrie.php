@@ -4,10 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use ApiPlatform\Metadata\ApiResource;
 
-#[ApiResource]
-class Equipment extends Model
+class Countrie extends Model
 {
     use HasFactory;
 
@@ -18,7 +16,6 @@ class Equipment extends Model
      */
     protected $fillable = [
         'name',
-        'state',
     ];
 
     /**
@@ -31,8 +28,11 @@ class Equipment extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function rooms()
+    /**
+     * Get the users associated with the country.
+     */
+    public function structures()
     {
-        return $this->belongsToMany(Room::class, 'room_equipments');
+        return $this->hasMany(Structure::class);
     }
 }

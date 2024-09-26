@@ -2,22 +2,20 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\GenreResource\Pages;
-use App\Filament\Resources\GenreResource\RelationManagers;
-use App\Models\Genre;
+use App\Filament\Resources\MaterialResource\Pages;
+use App\Filament\Resources\MaterialResource\RelationManagers;
+use App\Models\Material;
 use Filament\Forms;
 use Filament\Forms\Form;
-use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Str;
 
-class GenreResource extends Resource
+class MaterialResource extends Resource
 {
-    protected static ?string $model = Genre::class;
+    protected static ?string $model = Material::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -25,20 +23,7 @@ class GenreResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->label('Name')
-                    ->required()
-                    ->live()
-                    ->afterStateUpdated(function (Set $set, $state) {
-                        $set('slug', Str::slug($state));
-                    }),
-                Forms\Components\TextInput::make('slug')
-                    ->label('Slug')
-                    ->required()
-                    ->default(function (callable $get) {
-                        return Str::slug($get('name'));
-                    })
-                    ->disabled(),
+                Forms\Components\TextInput::make('name'),
             ]);
     }
 
@@ -71,9 +56,9 @@ class GenreResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListGenres::route('/'),
-            'create' => Pages\CreateGenre::route('/create'),
-            'edit' => Pages\EditGenre::route('/{record}/edit'),
+            'index' => Pages\ListMaterials::route('/'),
+            'create' => Pages\CreateMaterial::route('/create'),
+            'edit' => Pages\EditMaterial::route('/{record}/edit'),
         ];
     }
 }

@@ -38,13 +38,16 @@ class BandResource extends Resource
                 Forms\Components\Select::make('users')
                     ->multiple()
                     ->relationship('users', 'firstname', function ($query) {
-                        return $query->select(['firstname', 'lastname']);
+                        return $query->select(['users.id', 'firstname', 'lastname']);
                     })
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->firstname . ' ' . $record->lastname)                    
                     ->searchable()
                     ->preload()
                     ->required()
-                    ->label('Members'),
+                    ->label('Members')
+                    ->saveRelationshipsUsing(function ($component, $state, $record) {
+                        $record->users()->sync($state); // Synchroniser les utilisateurs sélectionnés
+                    }),
             ]);
     }
 
@@ -55,7 +58,7 @@ class BandResource extends Resource
                 Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TagsColumn::make('genres.name') // Display genre names as tags
                     ->label('Genres'),
-                    Tables\Columns\TagsColumn::make('users.firstname') // Display genre names as tags
+                Tables\Columns\TagsColumn::make('users.firstname')
                     ->label('Members'),
             ])
             ->filters([
