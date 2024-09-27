@@ -71,17 +71,6 @@ return [
         AuthorizationException::class => 403
     ],
 
-    'swagger' => [
-        'swagger_ui' => [
-            'enable' => true, // Assure-toi que Swagger UI est activé
-        ],
-        'security' => [
-            'type' => 'http',
-            'scheme' => 'bearer',
-            'bearerFormat' => 'JWT',
-        ],
-    ],
-
     'swagger_ui' => [
         'enabled' => true
     ],
