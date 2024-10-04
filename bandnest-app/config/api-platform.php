@@ -50,7 +50,7 @@ return [
 		'pagination_items_per_page' => 30,
 		'pagination_maximum_items_per_page' => 30,
         'route_prefix' => '/api',
-        'middleware' => [],
+        'middleware' => 'auth:sanctum',
     ],
 
 	'pagination' => [
@@ -72,7 +72,13 @@ return [
     ],
 
     'swagger_ui' => [
-        'enabled' => true
+        'enabled' => true,
+        'apiKeys' => [
+            'api' => [
+                'type' => 'header',
+                'name' => 'X-API-Key'
+            ]
+        ]
     ],
 
     'url_generation_strategy' => UrlGeneratorInterface::ABS_PATH,

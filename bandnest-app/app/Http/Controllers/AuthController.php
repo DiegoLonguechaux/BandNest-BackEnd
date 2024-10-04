@@ -27,12 +27,16 @@ class AuthController extends Controller
         $user = Auth::user();
 
         // Créer un token pour l'utilisateur
-        $token = $user->createToken('MyAppToken')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         // Retourner le token en réponse JSON
         return response()->json([
             'message' => 'Login successful',
-            'token' => $token
+            // 'token' => $token,
+            'authorisation' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ]
         ], 200);
     }
 
@@ -85,7 +89,11 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'User registered successfully. Please check your email to verify your account.',
             'user' => $user,
-            'token' => $token,
+            // 'token' => $token,
+            'authorisation' => [
+                'token' => $token,
+                'type' => 'bearer',
+            ]
         ], 201);
     }
 

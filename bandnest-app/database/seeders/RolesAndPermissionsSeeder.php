@@ -28,6 +28,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $editRooms = Permission::create(['name' => 'edit rooms']);
         $deleteRooms = Permission::create(['name' => 'delete rooms']);
 
+        $createBands = Permission::create(['name' => 'create bands']);
+        $editBands = Permission::create(['name' => 'edit bands']);
+        $deleteBands = Permission::create(['name' => 'delete bands']);
+
         // Assigner des permissions aux rôles
         $superAdmin->givePermissionTo([
             $createStructures, 
@@ -44,6 +48,11 @@ class RolesAndPermissionsSeeder extends Seeder
             $createRooms, 
             $editRooms, 
             $deleteRooms
+        ]);
+        $musician->givePermissionTo([
+            $createBands, 
+            $editBands, 
+            $deleteBands
         ]);
     }
 }

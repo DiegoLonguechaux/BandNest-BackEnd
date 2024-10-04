@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use ApiPlatform\Metadata\ApiResource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+#[ApiResource]
 class Genre extends Model
 {
     use HasFactory;
