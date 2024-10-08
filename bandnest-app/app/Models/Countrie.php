@@ -37,4 +37,12 @@ class Countrie extends Model
     {
         return $this->hasMany(Structure::class);
     }
+
+    /**
+     * Get the users associated with the country.
+     */
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
+    }
 }

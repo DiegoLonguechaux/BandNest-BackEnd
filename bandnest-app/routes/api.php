@@ -31,15 +31,15 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     })->middleware('auth:sanctum');
 // });
 
-Route::controller(AuthController::class)->group(function() {
-    Route::post('register', 'register');
-    Route::post('login', 'login');
-    Route::post('logout', 'logout');
-});
+// Route::controller(AuthController::class)->group(function() {
+//     Route::post('register', 'register');
+//     Route::post('login', 'login');
+//     Route::post('logout', 'logout')->middleware('auth:sanctum');
+// });
 
-// Route::post('/register', [AuthController::class, 'register']);
-// Route::post('/login', [AuthController::class, 'login'])->name('login');
-// Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Envoyer un email de vérification après l'inscription
 Route::middleware('auth:sanctum')->get('/email/verify', function (Request $request) {

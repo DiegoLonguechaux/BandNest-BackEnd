@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 //     Route::post('register', [RegisteredUserController::class, 'store']);
 
 //     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-//                 ->name('login');
+//         ->name('login');
 
 //     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 

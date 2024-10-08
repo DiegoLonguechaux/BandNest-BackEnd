@@ -74,11 +74,29 @@ return [
     'swagger_ui' => [
         'enabled' => true,
         'apiKeys' => [
-            'api' => [
-                'type' => 'header',
-                'name' => 'X-API-Key'
-            ]
-        ]
+           'api' => [
+               'type' => 'Bearer',
+               'name' => 'Authentication Token',
+               'in' => 'header'
+           ]
+        ],
+        //'oauth' => [
+        //    'enabled' => true,
+        //    'type' => 'oauth2',
+        //    'flow' => 'authorizationCode',
+        //    'tokenUrl' => '',
+        //    'authorizationUrl' =>'',
+        //    'refreshUrl' => '',
+        //    'scopes' => ['scope1' => 'Description scope 1'],
+        //    'pkce' => true
+        //]
+
+        // 'apiKeys' => [
+        //     'api' => [
+        //         'type' => 'header',
+        //         'name' => 'X-API-Key'
+        //     ]
+        // ]
     ],
 
     'url_generation_strategy' => UrlGeneratorInterface::ABS_PATH,

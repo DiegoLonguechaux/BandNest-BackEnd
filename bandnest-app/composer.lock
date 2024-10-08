@@ -74,7 +74,7 @@
         },
         {
             "name": "api-platform/documentation",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/documentation.git",
@@ -129,13 +129,13 @@
             ],
             "description": "API Platform documentation controller.",
             "support": {
-                "source": "https://github.com/api-platform/documentation/tree/v4.0.2"
+                "source": "https://github.com/api-platform/documentation/tree/v4.0.3"
             },
             "time": "2024-09-21T11:01:16+00:00"
         },
         {
             "name": "api-platform/hydra",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/hydra.git",
@@ -213,13 +213,13 @@
                 "rest"
             ],
             "support": {
-                "source": "https://github.com/api-platform/hydra/tree/v4.0.2"
+                "source": "https://github.com/api-platform/hydra/tree/v4.0.3"
             },
             "time": "2024-09-21T11:01:16+00:00"
         },
         {
             "name": "api-platform/json-api",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/json-api.git",
@@ -291,13 +291,13 @@
                 "rest"
             ],
             "support": {
-                "source": "https://github.com/api-platform/json-api/tree/v4.0.2"
+                "source": "https://github.com/api-platform/json-api/tree/v4.0.3"
             },
             "time": "2024-09-21T11:01:16+00:00"
         },
         {
             "name": "api-platform/json-hal",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/json-hal.git",
@@ -363,22 +363,22 @@
                 "rest"
             ],
             "support": {
-                "source": "https://github.com/api-platform/json-hal/tree/v4.0.2"
+                "source": "https://github.com/api-platform/json-hal/tree/v4.0.3"
             },
             "time": "2024-09-21T11:01:16+00:00"
         },
         {
             "name": "api-platform/json-schema",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/json-schema.git",
-                "reference": "8b29568be0a0e53e7f6fcf571c2df6c71337a104"
+                "reference": "5d2cbd05f06d88b63007185a946ba6f5b5526bad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/json-schema/zipball/8b29568be0a0e53e7f6fcf571c2df6c71337a104",
-                "reference": "8b29568be0a0e53e7f6fcf571c2df6c71337a104",
+                "url": "https://api.github.com/repos/api-platform/json-schema/zipball/5d2cbd05f06d88b63007185a946ba6f5b5526bad",
+                "reference": "5d2cbd05f06d88b63007185a946ba6f5b5526bad",
                 "shasum": ""
             },
             "require": {
@@ -441,22 +441,22 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/json-schema/tree/v4.0.2"
+                "source": "https://github.com/api-platform/json-schema/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:01:16+00:00"
+            "time": "2024-10-04T06:16:31+00:00"
         },
         {
             "name": "api-platform/jsonld",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/jsonld.git",
-                "reference": "67fca521038c7e979b3bc8946bf2ffd5e4c859f2"
+                "reference": "7f8c50f205feb54d063a7c9d3e2d728ba5e47cc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/jsonld/zipball/67fca521038c7e979b3bc8946bf2ffd5e4c859f2",
-                "reference": "67fca521038c7e979b3bc8946bf2ffd5e4c859f2",
+                "url": "https://api.github.com/repos/api-platform/jsonld/zipball/7f8c50f205feb54d063a7c9d3e2d728ba5e47cc8",
+                "reference": "7f8c50f205feb54d063a7c9d3e2d728ba5e47cc8",
                 "shasum": ""
             },
             "require": {
@@ -515,22 +515,22 @@
                 "rest"
             ],
             "support": {
-                "source": "https://github.com/api-platform/jsonld/tree/v4.0.2"
+                "source": "https://github.com/api-platform/jsonld/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:01:16+00:00"
+            "time": "2024-09-25T15:08:48+00:00"
         },
         {
             "name": "api-platform/laravel",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/laravel.git",
-                "reference": "e14b3218d9b9f42011ebf1c8aced148c6a49bdb6"
+                "reference": "814577a4b07a86bb041184ad91fa32edeb22c380"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/laravel/zipball/e14b3218d9b9f42011ebf1c8aced148c6a49bdb6",
-                "reference": "e14b3218d9b9f42011ebf1c8aced148c6a49bdb6",
+                "url": "https://api.github.com/repos/api-platform/laravel/zipball/814577a4b07a86bb041184ad91fa32edeb22c380",
+                "reference": "814577a4b07a86bb041184ad91fa32edeb22c380",
                 "shasum": ""
             },
             "require": {
@@ -553,7 +553,6 @@
                 "illuminate/routing": "^11.0",
                 "illuminate/support": "^11.0",
                 "laravel/framework": "^11.0",
-                "laravel/sanctum": "^4.0",
                 "php": ">=8.2",
                 "phpdocumentor/reflection-docblock": "^5.1",
                 "phpstan/phpdoc-parser": "^1.29",
@@ -564,6 +563,7 @@
                 "api-platform/graphql": "^4.0",
                 "doctrine/dbal": "^4.0",
                 "larastan/larastan": "^2.0",
+                "laravel/sanctum": "^4.0",
                 "orchestra/testbench": "^9.1",
                 "phpunit/phpunit": "^11.2"
             },
@@ -629,22 +629,22 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/laravel/tree/v4.0.2"
+                "source": "https://github.com/api-platform/laravel/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:06:18+00:00"
+            "time": "2024-10-04T13:02:55+00:00"
         },
         {
             "name": "api-platform/metadata",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/metadata.git",
-                "reference": "afdd1edb77f9de5f13ea3b08ac655a27a32e0496"
+                "reference": "e1ae73b79ab3ca46ddf14bad287721e784a9f4fa"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/metadata/zipball/afdd1edb77f9de5f13ea3b08ac655a27a32e0496",
-                "reference": "afdd1edb77f9de5f13ea3b08ac655a27a32e0496",
+                "url": "https://api.github.com/repos/api-platform/metadata/zipball/e1ae73b79ab3ca46ddf14bad287721e784a9f4fa",
+                "reference": "e1ae73b79ab3ca46ddf14bad287721e784a9f4fa",
                 "shasum": ""
             },
             "require": {
@@ -725,13 +725,13 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/metadata/tree/v4.0.2"
+                "source": "https://github.com/api-platform/metadata/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:01:16+00:00"
+            "time": "2024-10-04T14:46:35+00:00"
         },
         {
             "name": "api-platform/openapi",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/openapi.git",
@@ -810,22 +810,22 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/openapi/tree/v4.0.2"
+                "source": "https://github.com/api-platform/openapi/tree/v4.0.3"
             },
             "time": "2024-09-21T11:01:16+00:00"
         },
         {
             "name": "api-platform/serializer",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/serializer.git",
-                "reference": "7618e5ae6729709f0d1f4e1f7d61289088d8a14b"
+                "reference": "924649ec1caa4e1d495eeef595fb62b8f9326d25"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/serializer/zipball/7618e5ae6729709f0d1f4e1f7d61289088d8a14b",
-                "reference": "7618e5ae6729709f0d1f4e1f7d61289088d8a14b",
+                "url": "https://api.github.com/repos/api-platform/serializer/zipball/924649ec1caa4e1d495eeef595fb62b8f9326d25",
+                "reference": "924649ec1caa4e1d495eeef595fb62b8f9326d25",
                 "shasum": ""
             },
             "require": {
@@ -846,7 +846,6 @@
                 "doctrine/collections": "^2.1",
                 "phpspec/prophecy-phpunit": "^2.2",
                 "phpunit/phpunit": "^11.2",
-                "sebastian/comparator": "<5.0",
                 "symfony/mercure-bundle": "*",
                 "symfony/var-dumper": "^6.4 || ^7.0",
                 "symfony/yaml": "^6.4 || ^7.0"
@@ -901,22 +900,22 @@
                 "serializer"
             ],
             "support": {
-                "source": "https://github.com/api-platform/serializer/tree/v4.0.2"
+                "source": "https://github.com/api-platform/serializer/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:01:16+00:00"
+            "time": "2024-09-23T12:16:46+00:00"
         },
         {
             "name": "api-platform/state",
-            "version": "v4.0.2",
+            "version": "v4.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/state.git",
-                "reference": "b0265b53883fcfe1f1a4f0caf5c57e9b8b7a0332"
+                "reference": "b573a1dca8d746010bb4fb9122b2dc501e0245c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/state/zipball/b0265b53883fcfe1f1a4f0caf5c57e9b8b7a0332",
-                "reference": "b0265b53883fcfe1f1a4f0caf5c57e9b8b7a0332",
+                "url": "https://api.github.com/repos/api-platform/state/zipball/b573a1dca8d746010bb4fb9122b2dc501e0245c6",
+                "reference": "b573a1dca8d746010bb4fb9122b2dc501e0245c6",
                 "shasum": ""
             },
             "require": {
@@ -991,9 +990,9 @@
                 "swagger"
             ],
             "support": {
-                "source": "https://github.com/api-platform/state/tree/v4.0.2"
+                "source": "https://github.com/api-platform/state/tree/v4.0.3"
             },
-            "time": "2024-09-21T11:01:16+00:00"
+            "time": "2024-10-04T06:16:31+00:00"
         },
         {
             "name": "blade-ui-kit/blade-heroicons",
@@ -4468,24 +4467,24 @@
         },
         {
             "name": "nette/schema",
-            "version": "v1.3.0",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nette/schema.git",
-                "reference": "a6d3a6d1f545f01ef38e60f375d1cf1f4de98188"
+                "reference": "da801d52f0354f70a638673c4a0f04e16529431d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nette/schema/zipball/a6d3a6d1f545f01ef38e60f375d1cf1f4de98188",
-                "reference": "a6d3a6d1f545f01ef38e60f375d1cf1f4de98188",
+                "url": "https://api.github.com/repos/nette/schema/zipball/da801d52f0354f70a638673c4a0f04e16529431d",
+                "reference": "da801d52f0354f70a638673c4a0f04e16529431d",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^4.0",
-                "php": "8.1 - 8.3"
+                "php": "8.1 - 8.4"
             },
             "require-dev": {
-                "nette/tester": "^2.4",
+                "nette/tester": "^2.5.2",
                 "phpstan/phpstan-nette": "^1.0",
                 "tracy/tracy": "^2.8"
             },
@@ -4524,9 +4523,9 @@
             ],
             "support": {
                 "issues": "https://github.com/nette/schema/issues",
-                "source": "https://github.com/nette/schema/tree/v1.3.0"
+                "source": "https://github.com/nette/schema/tree/v1.3.2"
             },
-            "time": "2023-12-11T11:54:22+00:00"
+            "time": "2024-10-06T23:10:23+00:00"
         },
         {
             "name": "nette/utils",
@@ -10648,16 +10647,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "11.3.6",
+            "version": "11.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "d62c45a19c665bb872c2a47023a0baf41a98bb2b"
+                "reference": "89fe0c530133c08f7fff89d3d727154e4e504925"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/d62c45a19c665bb872c2a47023a0baf41a98bb2b",
-                "reference": "d62c45a19c665bb872c2a47023a0baf41a98bb2b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/89fe0c530133c08f7fff89d3d727154e4e504925",
+                "reference": "89fe0c530133c08f7fff89d3d727154e4e504925",
                 "shasum": ""
             },
             "require": {
@@ -10696,7 +10695,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "11.3-dev"
+                    "dev-main": "11.4-dev"
                 }
             },
             "autoload": {
@@ -10728,7 +10727,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.3.6"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/11.4.0"
             },
             "funding": [
                 {
@@ -10744,7 +10743,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-09-19T10:54:28+00:00"
+            "time": "2024-10-05T08:39:03+00:00"
         },
         {
             "name": "sebastian/cli-parser",

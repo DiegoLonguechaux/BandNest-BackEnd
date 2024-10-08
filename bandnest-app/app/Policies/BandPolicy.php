@@ -36,8 +36,9 @@ class BandPolicy
      * Determine whether the user can update the model.
      */
     public function update(User $user, Band $band)
-    {
-        // return $user->hasRole('super_admin') || $user->id === $structure->owner_id;
+    {   
+        return $user->hasRole('super_admin');
+        return $band->users()->where('user_id', $user->id)->exists();
     }
 
     /**
@@ -45,7 +46,8 @@ class BandPolicy
      */
     public function delete(User $user, Band $band)
     {
-        //
+        return $user->hasRole('super_admin');
+        return $band->users()->where('user_id', $user->id)->exists();
     }
 
     /**

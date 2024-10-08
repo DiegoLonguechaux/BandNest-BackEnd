@@ -81,6 +81,11 @@ class RoomResource extends Resource
                 Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TextColumn::make('size')->sortable(),
                 Tables\Columns\TextColumn::make('price_per_hour')->sortable(),
+                Tables\Columns\TextColumn::make('address')->sortable(),
+                Tables\Columns\TextColumn::make('city')->sortable(),
+                Tables\Columns\TextColumn::make('zip_code')->sortable(),
+                Tables\Columns\TextColumn::make('country.name')
+                    ->label('Country'),
             ])
             ->filters([
                 //

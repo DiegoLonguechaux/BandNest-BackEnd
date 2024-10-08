@@ -29,7 +29,7 @@ class PhotoPolicy
      */
     public function create(User $user)
     {
-        //
+        return $user->hasAnyRole(['super_admin', 'owner']);
     }
 
     /**
@@ -37,7 +37,7 @@ class PhotoPolicy
      */
     public function update(User $user, Photo $photo)
     {
-        //
+        return $user->hasRole('super_admin') || $user->id === $photo->structure_id->owner_id || $user->id === $photo->room_id->structure_id->owner_id;
     }
 
     /**
@@ -45,7 +45,7 @@ class PhotoPolicy
      */
     public function delete(User $user, Photo $photo)
     {
-        //
+        return $user->hasRole('super_admin') || $user->id === $photo->structure_id->owner_id || $user->id === $photo->room_id->structure_id->owner_id;
     }
 
     /**

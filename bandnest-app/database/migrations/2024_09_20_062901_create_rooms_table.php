@@ -18,6 +18,10 @@ return new class extends Migration
             $table->decimal('size')->nullable();
             $table->text('description')->nullable();
             $table->decimal('price_per_hour')->nullable();
+            $table->string('address');
+            $table->string('city');
+            $table->string('zip_code');
+            $table->foreignId('country_id')->constrained('countries');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });
