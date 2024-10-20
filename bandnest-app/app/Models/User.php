@@ -7,11 +7,36 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new Post(),
+        new GetCollection(),
+        // new Patch(
+            // controller: ProfileController::class,
+            // uriTemplate: '/users/{id}',
+            // inputFormats: ['multipart' => ['multipart/form-data']],
+            // outputFormats: ['json' => ['application/json']],
+            // deserialize: false,
+            
+            // controller: ProfileController::class,  // Le contrôleur à utiliser
+            // uriTemplate: '/users/{id}',  // La route à utiliser
+            // inputFormats: ['multipart' => ['multipart/form-data']],
+            // outputFormats: ['json' => ['application/json']],
+            // deserialize: false,  // Désérialisation manuelle
+            // name: 'update',  // Nom de l'opération (optionnel)
+        // ),
+    ]
+)]
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasRoles, HasApiTokens, HasFactory, Notifiable;
@@ -67,7 +92,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     public function structures()
     {
-        return $this->hasMany(Structure::class);
+        return $this->hasMany(Structure::class, 'owner_id');
     }
 
     /**

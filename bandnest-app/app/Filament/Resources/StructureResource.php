@@ -23,11 +23,11 @@ class StructureResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name'),
+                Forms\Components\TextInput::make('name')->required(),
                 Forms\Components\TextInput::make('description'),
-                Forms\Components\TextInput::make('address'),
-                Forms\Components\TextInput::make('city'),
-                Forms\Components\TextInput::make('zip_code'),
+                Forms\Components\TextInput::make('address')->required(),
+                Forms\Components\TextInput::make('city')->required(),
+                Forms\Components\TextInput::make('zip_code')->required(),
                 Forms\Components\Select::make('owner_id')
                     ->relationship('owner', 'firstname', function ($query) {
                         return $query->select(['id', 'firstname', 'lastname']);

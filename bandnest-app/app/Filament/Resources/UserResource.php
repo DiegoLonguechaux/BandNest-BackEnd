@@ -39,7 +39,7 @@ class UserResource extends Resource
     {
         return $table
             ->columns([ 
-                Tables\Columns\ImageColumn::make('profile_photo')->circular(),
+                Tables\Columns\ImageColumn::make('profile_photo')->circular()->defaultImageUrl(url('/profile_photo/6715289332d62.jpg')),
                 Tables\Columns\TextColumn::make('name')->sortable(),
                 Tables\Columns\TextColumn::make('firstname')->sortable(),
                 Tables\Columns\TextColumn::make('lastname')->sortable(),

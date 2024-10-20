@@ -22,12 +22,13 @@ return [
 
     'formats' => [
         'jsonld' => ['application/ld+json'],
+        'multipart' => ['multipart/form-data'],
         //'jsonapi' => ['application/vnd.api+json'],
         //'csv' => ['text/csv'],
     ],
 
     'patch_formats' => [
-        'json' => ['application/merge-patch+json'],
+        'multipart' => ['multipart/form-data'],
     ],
 
     'docs_formats' => [

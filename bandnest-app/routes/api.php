@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
@@ -41,10 +44,33 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+// Route::patch('/users/{id}', function ($id) {
+//     Log::info('Route PATCH /users/{id} atteinte avec ID: ' . $id);
+//     return 'Route atteinte';
+// });
+
+// Route::middleware('auth:sanctum', 'verified')->group(function () {
+//     Route::patch('/users/{id}', function(Request $request){[ProfileController::class, 'update'];});
+// });
+
+Route::middleware('auth:sanctum', 'verified')->group(function () {
+    Route::post('/users/{id}', [ProfileController::class, 'update']);  // Utiliser POST pour tester
+});
+
+Route::post('/test', function (Request $request) {
+    Log::info($request->all());  // Voir ce que la requête renvoie
+    return response()->json($request->all());
+});
+
 // Envoyer un email de vérification après l'inscription
 Route::middleware('auth:sanctum')->get('/email/verify', function (Request $request) {
     return $request->user()->sendEmailVerificationNotification();
 });
+
+// Envoyer un email de vérification après l'inscription
+Route::middleware(['auth:sanctum'])->post('/email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
+    ->middleware('throttle:6,1')
+    ->name('verification.send');
 
 // Route pour vérifier l'email via le lien reçu
 Route::middleware(['auth:sanctum', 'signed'])->get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
