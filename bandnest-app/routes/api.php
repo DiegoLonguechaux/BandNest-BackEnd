@@ -53,13 +53,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 //     Route::patch('/users/{id}', function(Request $request){[ProfileController::class, 'update'];});
 // });
 
-Route::middleware('auth:sanctum', 'verified')->group(function () {
-    Route::post('/users/{id}', [ProfileController::class, 'update']);  // Utiliser POST pour tester
+Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(function () {
+    Route::get('/api', function () {
+        return response()->json([
+            'message' => 'Welcome, Super Admin!',
+        ]);
+    });
 });
 
-Route::post('/test', function (Request $request) {
-    Log::info($request->all());  // Voir ce que la requête renvoie
-    return response()->json($request->all());
+Route::middleware('auth:sanctum', 'verified')->group(function () {
+    Route::post('/users/{id}', [ProfileController::class, 'update']);  // Utiliser POST pour tester
 });
 
 // Envoyer un email de vérification après l'inscription

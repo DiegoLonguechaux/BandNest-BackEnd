@@ -51,7 +51,7 @@ class ProfileController extends Controller
             $file = $request->file('profile_photo');
 
             // Générer un nom unique pour l'image
-            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();   
     
             // Stocker l'image dans le dossier 'profile_photos'
             $file->storeAs('profile_photos', $fileName, 'public');

@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Laravel\Sanctum\HasApiTokens;
@@ -21,13 +22,7 @@ use Spatie\Permission\Traits\HasRoles;
         new Get(),
         new Post(),
         new GetCollection(),
-        // new Patch(
-            // controller: ProfileController::class,
-            // uriTemplate: '/users/{id}',
-            // inputFormats: ['multipart' => ['multipart/form-data']],
-            // outputFormats: ['json' => ['application/json']],
-            // deserialize: false,
-            
+        // new Patch(            
             // controller: ProfileController::class,  // Le contrôleur à utiliser
             // uriTemplate: '/users/{id}',  // La route à utiliser
             // inputFormats: ['multipart' => ['multipart/form-data']],
