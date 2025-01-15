@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRoomRequest;
+use App\Http\Resources\RoomResource;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class RoomController extends Controller
 {
@@ -12,7 +15,9 @@ class RoomController extends Controller
      */
     public function index()
     {
-        //
+        return RoomResource::collection(
+            Room::query()->paginate()
+        );
     }
 
     /**
@@ -26,9 +31,10 @@ class RoomController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRoomRequest $request)
     {
-        //
+        $room = $request->user();
+        return RoomResource::make($room);
     }
 
     /**
@@ -52,14 +58,20 @@ class RoomController extends Controller
      */
     public function update(Request $request, Room $room)
     {
-        //
+        $this->authorize('update', $room);
+
+        return RoomResource::make($room);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Room $room)
+    public function destroy(Room $room): Response
     {
-        //
+        $this->authorize('delete', $room);
+
+        $room->delete();
+
+        return response()->noContent();
     }
 }
