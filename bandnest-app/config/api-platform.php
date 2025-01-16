@@ -21,7 +21,7 @@ return [
     ],
 
     'formats' => [
-        'jsonld' => ['application/ld+json'],
+        // 'jsonld' => ['application/ld+json'],
         'multipart' => ['multipart/form-data'],
         //'jsonapi' => ['application/vnd.api+json'],
         //'csv' => ['text/csv'],

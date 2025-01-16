@@ -20,8 +20,11 @@ use Spatie\Permission\Traits\HasRoles;
 #[ApiResource(
     operations: [
         new Get(),
-        new Post(),
+        new Post(
+            inputFormats: ['multipart' => ['multipart/form-data']],
+        ),
         new GetCollection(),
+        new Patch(),
         // new Patch(            
             // controller: ProfileController::class,  // Le contrôleur à utiliser
             // uriTemplate: '/users/{id}',  // La route à utiliser

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBandRequest;
+use App\Http\Resources\BandResource;
 use App\Models\Band;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -11,9 +13,9 @@ class BandController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(): Response
+    public function index()
     {
-        return response('Hello, World!');
+        return BandResource::collection(Band::with(['genres', 'users'])->paginate());
     }
 
     /**
@@ -27,9 +29,21 @@ class BandController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreBandRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $band = Band::create($validated);
+
+        if (isset($validated['genres'])) {
+            $band->genres()->sync($validated['genres']);
+        }
+
+        if (isset($validated['users'])) {
+            $band->users()->sync($validated['users']);
+        }
+
+        return BandResource::make($band->load(['genres', 'users']));
     }
 
     /**
@@ -37,7 +51,7 @@ class BandController extends Controller
      */
     public function show(Band $band)
     {
-        //
+        return BandResource::make($band->load(['genres', 'users']));
     }
 
     /**
@@ -53,14 +67,34 @@ class BandController extends Controller
      */
     public function update(Request $request, Band $band)
     {
-        //
+        $this->authorize('update', $band);
+
+        $validated = $request->validated();
+
+        // Mettre à jour le groupe
+        $band->update($validated);
+
+        // Synchroniser les relations si nécessaires
+        if (isset($validated['genres'])) {
+            $band->genres()->sync($validated['genres']);
+        }
+
+        if (isset($validated['users'])) {
+            $band->users()->sync($validated['users']);
+        }
+
+        return BandResource::make($band->load(['genres', 'users']));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Band $band)
+    public function destroy(Band $band):  Response
     {
-        //
+        $this->authorize('delete', $band);
+
+        $band->delete();
+
+        return response()->noContent();
     }
 }

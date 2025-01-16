@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreStructureRequest;
+use App\Http\Resources\StructureResource;
 use App\Models\Structure;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
-class StructuresController extends Controller
+class StructureController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        return StructureResource::collection(
+            Structure::with(['owner', 'country', 'rooms', 'photos'])->paginate()
+        );
     }
 
     /**
@@ -26,9 +31,11 @@ class StructuresController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreStructureRequest $request)
     {
-        //
+        $structure = Structure::create($request->validated());
+
+        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
     }
 
     /**
@@ -36,7 +43,7 @@ class StructuresController extends Controller
      */
     public function show(Structure $structure)
     {
-        //
+        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
     }
 
     /**
@@ -52,14 +59,22 @@ class StructuresController extends Controller
      */
     public function update(Request $request, Structure $structure)
     {
-        //
+        $this->authorize('update', $structure);
+
+        $structure->update($request->validated());
+
+        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Structure $structure)
+    public function destroy(Structure $structure): Response
     {
-        //
+        $this->authorize('delete', $structure);
+
+        $structure->delete();
+
+        return response()->noContent();
     }
 }

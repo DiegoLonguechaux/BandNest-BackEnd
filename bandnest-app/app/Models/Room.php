@@ -11,14 +11,14 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[ApiResource(
-    operations: [
-        new Get(),
-        new Post(),
-        new GetCollection(),
-        new Patch(),
-    ]
-)]
+// #[ApiResource(
+//     operations: [
+//         new Get(),
+//         new Post(),
+//         new GetCollection(),
+//         new Patch(),
+//     ]
+// )]
 class Room extends Model
 {
     use HasFactory, SoftDeletes;

@@ -16,7 +16,7 @@ class RoomController extends Controller
     public function index()
     {
         return RoomResource::collection(
-            Room::query()->paginate()
+            Room::with(['structure', 'country', 'photos', 'materials'])->paginate()
         );
     }
 
@@ -33,8 +33,12 @@ class RoomController extends Controller
      */
     public function store(StoreRoomRequest $request)
     {
-        $room = $request->user();
-        return RoomResource::make($room);
+        $room = Room::create($request->validated());
+        
+        if (isset($request->validated()['materials'])) {
+            $room->materials()->sync($request->validated()['materials']);
+        }
+        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
     }
 
     /**
@@ -42,7 +46,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        //
+        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
     }
 
     /**
@@ -59,8 +63,14 @@ class RoomController extends Controller
     public function update(Request $request, Room $room)
     {
         $this->authorize('update', $room);
+        
+        $room->update($request->validated());
 
-        return RoomResource::make($room);
+        if (isset($validated['materials'])) {
+            $room->materials()->sync($request->validated()['materials']);
+        }
+    
+        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
     }
 
     /**

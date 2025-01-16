@@ -27,11 +27,17 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function store(Request $request)
+    {
+        dd($request);
+    }
+
     /**
      * Update the user's profile information.
      */
     public function update(Request $request, $id)
     {
+        dd($request);
         $user = User::findOrFail($id);
 
         // Mise à jour de l'email (si fourni et différent)

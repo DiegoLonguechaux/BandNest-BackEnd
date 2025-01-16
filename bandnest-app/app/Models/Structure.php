@@ -11,14 +11,14 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 
-#[ApiResource(
-    operations: [
-        new Get(),
-        new Post(),
-        new GetCollection(),
-        new Patch(),
-    ]
-)]
+// #[ApiResource(
+//     operations: [
+//         new Get(),
+//         new Post(),
+//         new GetCollection(),
+//         new Patch(),
+//     ]
+// )]
 class Structure extends Model
 {
     use HasFactory, SoftDeletes;

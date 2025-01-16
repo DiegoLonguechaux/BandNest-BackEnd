@@ -4,7 +4,13 @@ use App\Http\Controllers\Auth\EmailVerificationNotificationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BandController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\GenreController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\StructureController;
+use App\Models\Structure;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Support\Facades\Log;
 use Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful;
@@ -44,6 +50,15 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
+
+// Route::apiResource('/bands', BandController::class);
+// Route::post('/bands', [BandController::class, 'store']);
+Route::apiResource('bands', BandController::class);
+Route::apiResource('bookings', BookingController::class);
+Route::apiResource('genres', GenreController::class);
+Route::apiResource('rooms', RoomController::class);
+Route::apiResource('structures', StructureController::class);
+
 // Route::patch('/users/{id}', function ($id) {
 //     Log::info('Route PATCH /users/{id} atteinte avec ID: ' . $id);
 //     return 'Route atteinte';
@@ -62,6 +77,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(funct
 });
 
 Route::middleware('auth:sanctum', 'verified')->group(function () {
+    // Route::resources('/users', [ProfileController::class, 'store']);
     Route::post('/users/{id}', [ProfileController::class, 'update']);  // Utiliser POST pour tester
 });
 

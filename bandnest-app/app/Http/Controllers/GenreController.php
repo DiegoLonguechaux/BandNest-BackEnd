@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreGenreRequest;
+use App\Http\Resources\GenreResource;
 use App\Models\Genre;
 use Illuminate\Http\Request;
 
@@ -12,7 +14,7 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
+        return GenreResource::collection( Genre::with('bands')->paginate());
     }
 
     /**
@@ -26,9 +28,13 @@ class GenreController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreGenreRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $genre = Genre::create($validated);
+
+        return GenreResource::make($genre->load('bands'));
     }
 
     /**
@@ -36,7 +42,7 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
+        return GenreResource::make($genre->load('bands'));
     }
 
     /**
@@ -52,7 +58,13 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        //
+        $this->authorize('update', $genre);
+
+        $validated = $request->validated();
+
+        $genre->update($validated);
+
+        return GenreResource::make($genre->load('bands'));
     }
 
     /**
@@ -60,6 +72,10 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $this->authorize('delete', $genre);
+
+        $genre->delete();
+
+        return response()->noContent();
     }
 }

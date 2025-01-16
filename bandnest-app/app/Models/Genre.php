@@ -11,14 +11,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
-#[ApiResource(
-    operations: [
-        new Get(),
-        new Post(),
-        new GetCollection(),
-        new Patch(),
-    ]
-)]
+// #[ApiResource(
+//     operations: [
+//         new Get(),
+//         new Post(),
+//         new GetCollection(),
+//         new Patch(),
+//     ]
+// )]
 class Genre extends Model
 {
     use HasFactory;
