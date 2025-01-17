@@ -31,6 +31,7 @@ class GenreController extends Controller
      */
     public function store(StoreGenreRequest $request)
     {
+        dd('toto');
         $validated = $request->validated();
 
         $genre = Genre::create($validated);

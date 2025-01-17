@@ -29,7 +29,7 @@ class GenrePolicy
      */
     public function create(User $user)
     {
-        return $user->hasRole('super_admin');
+        // return $user->hasRole('super_admin');
     }
 
     /**

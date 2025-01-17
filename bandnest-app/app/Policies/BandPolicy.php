@@ -29,7 +29,7 @@ class BandPolicy
      */
     public function create(User $user)
     {
-        return $user->hasAnyRole(['super_admin', 'musician']);
+        // return $user->hasAnyRole(['super_admin', 'musician']);
     }
 
     /**

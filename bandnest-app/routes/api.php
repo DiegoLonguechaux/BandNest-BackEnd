@@ -57,15 +57,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Route::apiResource('/bands', BandController::class);
 // Route::post('/bands', [BandController::class, 'store']);
-Route::apiResource('bands', BandController::class);
-Route::apiResource('bookings', BookingController::class);
-Route::apiResource('countries', CountrieController::class);
+// Route::apiResource('/bands', BandController::class);
 Route::apiResource('genres', GenreController::class);
-Route::apiResource('materials', MaterialController::class);
-Route::apiResource('operating-hours', OperatingHourController::class);
-Route::apiResource('photos', PhotoController::class);
-Route::apiResource('rooms', RoomController::class);
-Route::apiResource('structures', StructureController::class);
+
+Route::apiResource('/bookings', BookingController::class);
+Route::apiResource('/countries', CountrieController::class);
+Route::apiResource('/materials', MaterialController::class);
+Route::apiResource('/operating-hours', OperatingHourController::class);
+Route::apiResource('/photos', PhotoController::class);
+Route::apiResource('/rooms', RoomController::class);
+Route::apiResource('/structures', StructureController::class);
 
 // Route::patch('/users/{id}', function ($id) {
 //     Log::info('Route PATCH /users/{id} atteinte avec ID: ' . $id);
@@ -86,7 +87,12 @@ Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(funct
 
 Route::middleware('auth:sanctum', 'verified')->group(function () {
     // Route::resources('/users', [ProfileController::class, 'store']);
-    Route::post('/users/{id}', [ProfileController::class, 'update']);  // Utiliser POST pour tester
+    // Route::post('/users/{id}', [ProfileController::class, 'update']);
+    Route::get('/users/{id}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::patch('/users/{id}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::apiResource('/bands', BandController::class);
+
 });
 
 // Envoyer un email de vérification après l'inscription
