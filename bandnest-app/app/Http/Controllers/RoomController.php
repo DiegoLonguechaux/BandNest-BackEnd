@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRoomRequest;
+use App\Http\Requests\UpdateRoomRequest;
 use App\Http\Resources\RoomResource;
 use App\Models\Room;
 use Illuminate\Http\Request;
@@ -60,7 +61,7 @@ class RoomController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Room $room)
+    public function update(UpdateRoomRequest $request, Room $room)
     {
         $this->authorize('update', $room);
         

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreStructureRequest;
+use App\Http\Requests\UpdateStructureRequest;
 use App\Http\Resources\StructureResource;
 use App\Models\Structure;
 use Illuminate\Http\Request;
@@ -57,7 +58,7 @@ class StructureController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Structure $structure)
+    public function update(UpdateStructureRequest $request, Structure $structure)
     {
         $this->authorize('update', $structure);
 

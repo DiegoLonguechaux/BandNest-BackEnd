@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePhotoRequest;
+use App\Http\Requests\UpdatePhotoRequest;
+use App\Http\Resources\PhotoResource;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,7 @@ class PhotoController extends Controller
      */
     public function index()
     {
-        //
+        return PhotoResource::collection(Photo::with(['room', 'structure'])->paginate());
     }
 
     /**
@@ -26,9 +29,14 @@ class PhotoController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePhotoRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        // Créer une photo
+        $photo = Photo::create($validated);
+
+        return PhotoResource::make($photo->load(['room', 'structure']));
     }
 
     /**
@@ -36,7 +44,7 @@ class PhotoController extends Controller
      */
     public function show(Photo $photo)
     {
-        //
+        return PhotoResource::make($photo->load(['room', 'structure']));
     }
 
     /**
@@ -50,9 +58,16 @@ class PhotoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Photo $photo)
+    public function update(UpdatePhotoRequest $request, Photo $photo)
     {
-        //
+        $this->authorize('update', $photo);
+
+        $validated = $request->validated();
+
+        // Mettre à jour la photo
+        $photo->update($validated);
+
+        return PhotoResource::make($photo->load(['room', 'structure']));
     }
 
     /**
@@ -60,6 +75,10 @@ class PhotoController extends Controller
      */
     public function destroy(Photo $photo)
     {
-        //
+        $this->authorize('delete', $photo);
+
+        $photo->delete();
+
+        return response()->noContent();
     }
 }

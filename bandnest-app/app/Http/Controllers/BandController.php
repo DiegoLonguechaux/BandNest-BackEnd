@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBandRequest;
+use App\Http\Requests\UpdateBandRequest;
 use App\Http\Resources\BandResource;
 use App\Models\Band;
 use Illuminate\Http\Request;
@@ -65,7 +66,7 @@ class BandController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Band $band)
+    public function update(UpdateBandRequest $request, Band $band)
     {
         $this->authorize('update', $band);
 

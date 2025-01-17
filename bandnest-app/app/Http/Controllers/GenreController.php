@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreGenreRequest;
+use App\Http\Requests\UpdateGenreRequest;
 use App\Http\Resources\GenreResource;
 use App\Models\Genre;
 use Illuminate\Http\Request;
@@ -56,7 +57,7 @@ class GenreController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Genre $genre)
+    public function update(UpdateGenreRequest $request, Genre $genre)
     {
         $this->authorize('update', $genre);
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookingRequest;
+use App\Http\Requests\UpdateBookingRequest;
 use App\Http\Resources\BookingResource;
 use App\Models\Booking;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class BookingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Booking $booking)
+    public function update(UpdateBookingRequest $request, Booking $booking)
     {
         $this->authorize('update', $booking);
 

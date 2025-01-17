@@ -10,14 +10,14 @@ use ApiPlatform\Metadata\Post;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-#[ApiResource(
-    operations: [
-        new Get(),
-        new Post(),
-        new GetCollection(),
-        new Patch(),
-    ]
-)]
+// #[ApiResource(
+//     operations: [
+//         new Get(),
+//         new Post(),
+//         new GetCollection(),
+//         new Patch(),
+//     ]
+// )]
 class Countrie extends Model
 {
     use HasFactory;

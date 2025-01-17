@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMaterialRequest;
+use App\Http\Requests\UpdateMaterialRequest;
+use App\Http\Resources\MaterialResource;
 use App\Models\Material;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        //
+        return MaterialResource::collection( Material::with('rooms')->paginate());
     }
 
     /**
@@ -26,9 +29,13 @@ class MaterialController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMaterialRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $material = Material::create($validated);
+
+        return MaterialResource::make($material->load('rooms'));
     }
 
     /**
@@ -36,7 +43,7 @@ class MaterialController extends Controller
      */
     public function show(Material $material)
     {
-        //
+        return MaterialResource::make($material->load('rooms'));
     }
 
     /**
@@ -50,9 +57,15 @@ class MaterialController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Material $material)
+    public function update(UpdateMaterialRequest $request, Material $material)
     {
-        //
+        $this->authorize('update', $material);
+
+        $validated = $request->validated();
+
+        $material->update($validated);
+
+        return MaterialResource::make($material->load('rooms'));
     }
 
     /**
@@ -60,6 +73,10 @@ class MaterialController extends Controller
      */
     public function destroy(Material $material)
     {
-        //
+        $this->authorize('delete', $material);
+
+        $material->delete();
+
+        return response()->noContent();
     }
 }

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCountrieRequest;
+use App\Http\Requests\UpdateCountrieRequest;
+use App\Http\Resources\CountrieResource;
 use App\Models\Countrie;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CountrieController extends Controller
 {
@@ -12,7 +16,7 @@ class CountrieController extends Controller
      */
     public function index()
     {
-        //
+        return CountrieResource::collection(Countrie::with(['structures', 'rooms'])->paginate());
     }
 
     /**
@@ -26,9 +30,13 @@ class CountrieController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCountrieRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $countrie = Countrie::create($validated);
+
+        return CountrieResource::make($countrie->load(['structures', 'rooms']));
     }
 
     /**
@@ -36,7 +44,7 @@ class CountrieController extends Controller
      */
     public function show(Countrie $countrie)
     {
-        //
+        return CountrieResource::make($countrie->load(['structures', 'rooms']));
     }
 
     /**
@@ -50,16 +58,26 @@ class CountrieController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Countrie $countrie)
+    public function update(UpdateCountrieRequest $request, Countrie $countrie)
     {
-        //
+        $this->authorize('update', $countrie);
+
+        $validated = $request->validated();
+
+        $countrie->update($validated);
+
+        return CountrieResource::make($countrie->load(['structures', 'rooms']));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Countrie $countrie)
+    public function destroy(Countrie $countrie): Response
     {
-        //
+        $this->authorize('delete', $countrie);
+
+        $countrie->delete();
+
+        return response()->noContent();
     }
 }
