@@ -33,7 +33,6 @@ class PhotoController extends Controller
     {
         $validated = $request->validated();
 
-        // Créer une photo
         $photo = Photo::create($validated);
 
         return PhotoResource::make($photo->load(['room', 'structure']));

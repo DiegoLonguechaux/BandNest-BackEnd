@@ -34,6 +34,8 @@ class StructureController extends Controller
      */
     public function store(StoreStructureRequest $request)
     {
+        $this->authorize('create', Structure::class);
+        
         $structure = Structure::create($request->validated());
 
         return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));

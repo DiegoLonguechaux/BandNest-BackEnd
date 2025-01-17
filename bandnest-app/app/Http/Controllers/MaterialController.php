@@ -31,6 +31,8 @@ class MaterialController extends Controller
      */
     public function store(StoreMaterialRequest $request)
     {
+        $this->authorize('create', Material::class);
+
         $validated = $request->validated();
 
         $material = Material::create($validated);

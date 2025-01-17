@@ -32,6 +32,8 @@ class CountrieController extends Controller
      */
     public function store(StoreCountrieRequest $request)
     {
+        $this->authorize('create', Countrie::class);
+        
         $validated = $request->validated();
 
         $countrie = Countrie::create($validated);

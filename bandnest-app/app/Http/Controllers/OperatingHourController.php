@@ -31,6 +31,8 @@ class OperatingHourController extends Controller
      */
     public function store(StoreOperatingHourRequest $request)
     {
+        $this->authorize('create', OperatingHour::class);
+
         $validated = $request->validated();
 
         $operatingHour = OperatingHour::create($validated);

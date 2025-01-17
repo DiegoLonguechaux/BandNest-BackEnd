@@ -31,7 +31,8 @@ class GenreController extends Controller
      */
     public function store(StoreGenreRequest $request)
     {
-        dd('toto');
+        $this->authorize('create', Genre::class);
+        
         $validated = $request->validated();
 
         $genre = Genre::create($validated);

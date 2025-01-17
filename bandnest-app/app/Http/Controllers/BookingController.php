@@ -32,6 +32,8 @@ class BookingController extends Controller
      */
     public function store(StoreBookingRequest $request)
     {
+        $this->authorize('create', Booking::class);
+        
         $booking = Booking::create($request->validated());
         
         return BookingResource::make($booking->load(['user', 'room', 'band']));

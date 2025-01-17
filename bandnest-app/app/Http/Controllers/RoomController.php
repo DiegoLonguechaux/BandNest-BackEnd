@@ -34,6 +34,8 @@ class RoomController extends Controller
      */
     public function store(StoreRoomRequest $request)
     {
+        $this->authorize('create', Room::class);
+        
         $room = Room::create($request->validated());
         
         if (isset($request->validated()['materials'])) {

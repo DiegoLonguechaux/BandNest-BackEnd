@@ -32,6 +32,8 @@ class BandController extends Controller
      */
     public function store(StoreBandRequest $request)
     {
+        $this->authorize('create', Band::class);
+        
         $validated = $request->validated();
 
         $band = Band::create($validated);
