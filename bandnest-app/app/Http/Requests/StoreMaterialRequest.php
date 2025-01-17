@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreMaterialRequest extends FormRequest
 {
@@ -23,7 +24,7 @@ class StoreMaterialRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'unique:materials,name'],
-            'state' => ['required', 'string'],
+            'state' => ['required', 'string', Rule::in(['pending', 'confirmed', 'cancelled'])],
         ];
     }
 }

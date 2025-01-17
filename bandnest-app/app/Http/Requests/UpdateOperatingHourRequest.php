@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateOperatingHourRequest extends FormRequest
 {
@@ -22,7 +23,14 @@ class UpdateOperatingHourRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'room_id' => ['required', Rule::exists('rooms', 'id')],
+            'day' => [
+                'required',
+                'string',
+                Rule::in(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']),
+            ],
+            'start' => ['required', 'date_format:H:i'],
+            'end' => ['required', 'date_format:H:i', 'after:start'],
         ];
     }
 }

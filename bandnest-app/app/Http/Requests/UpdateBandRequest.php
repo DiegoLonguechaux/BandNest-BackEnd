@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateBandRequest extends FormRequest
 {
@@ -22,7 +23,18 @@ class UpdateBandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('bands', 'name')->ignore($this->band->id),
+            ],
+            'description' => ['nullable', 'string'],
+            'logo' => ['nullable', 'string', 'url', 'max:255'],
+            'genres' => ['nullable', 'array'],
+            'genres.*' => [Rule::exists('genres', 'id')],
+            'users' => ['nullable', 'array'],
+            'users.*' => [Rule::exists('users', 'id')],
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdatePhotoRequest extends FormRequest
 {
@@ -22,7 +23,9 @@ class UpdatePhotoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'url' => ['required', 'string', 'url', 'max:255'],
+            'room_id' => ['nullable', Rule::exists('rooms', 'id')],
+            'structure_id' => ['nullable', Rule::exists('structures', 'id')],
         ];
     }
 }

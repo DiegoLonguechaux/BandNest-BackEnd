@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateMaterialRequest extends FormRequest
 {
@@ -22,7 +23,17 @@ class UpdateMaterialRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('materials', 'name')->ignore($this->material->id),
+            ],
+            'state' => [
+                'required',
+                'string',
+                Rule::in(['pending', 'confirmed', 'cancelled']),
+            ],
         ];
     }
 }
