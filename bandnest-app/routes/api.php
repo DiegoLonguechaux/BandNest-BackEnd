@@ -54,12 +54,8 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-
-// Route::apiResource('/bands', BandController::class);
-// Route::post('/bands', [BandController::class, 'store']);
-// Route::apiResource('/bands', BandController::class);
-
-
+Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
+Route::get('rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
 
 // Route::patch('/users/{id}', function ($id) {
 //     Log::info('Route PATCH /users/{id} atteinte avec ID: ' . $id);
@@ -91,7 +87,10 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
     Route::apiResource('materials', MaterialController::class);
     Route::apiResource('operating-hours', OperatingHourController::class);
     Route::apiResource('photos', PhotoController::class);
-    Route::apiResource('rooms', RoomController::class);
+    // Route::apiResource('rooms', RoomController::class);
+    Route::post('rooms', [RoomController::class, 'store'])->name('rooms.store');
+    Route::patch('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
+    Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
     Route::apiResource('structures', StructureController::class);
 });
 
