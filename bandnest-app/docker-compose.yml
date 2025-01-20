@@ -111,6 +111,14 @@ services:
             - sail
         ports:
             - 8001:80
+    bandnest-front:
+        build: 
+            context: '../../BandNest-FrontEnd/BandNest-FrontEnd'
+            dockerfile: Dockerfile
+        volumes:
+            - ../../BandNest-FrontEnd/BandNest-FrontEnd:/app
+        ports:
+            - 4200:4200
 networks:
     sail:
         driver: bridge
