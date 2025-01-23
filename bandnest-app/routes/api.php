@@ -54,7 +54,7 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/rooms', [RoomController::class, 'index'])->name('rooms.index');
+Route::get('rooms', [RoomController::class, 'index'])->name('rooms.index');
 Route::get('rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
 
 // Route::patch('/users/{id}', function ($id) {
