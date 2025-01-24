@@ -32,7 +32,6 @@ class AuthController extends Controller
         // Retourner le token en réponse JSON
         return response()->json([
             'message' => 'Login successful',
-            // 'token' => $token,
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
@@ -89,7 +88,6 @@ class AuthController extends Controller
         return response()->json([
             'message' => 'User registered successfully. Please check your email to verify your account.',
             'user' => $user,
-            // 'token' => $token,
             'authorisation' => [
                 'token' => $token,
                 'type' => 'bearer',
