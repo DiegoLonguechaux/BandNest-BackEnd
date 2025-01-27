@@ -24,12 +24,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // Route::middleware('auth:sanctum', 'verified')->group(function () {
-//     Route::get('/rooms', function () {
-//         return response()->json(['message' => 'Let\'s see the rooms']);
-//     });
-// });
-
-// Route::middleware('auth:sanctum', 'verified')->group(function () {
 //     Route::post('/rooms', function (Request $request) {
 //         $user = $request->user();
 //         // Vérifier si l'utilisateur a les rôles super_admin ou owner
@@ -44,11 +38,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     })->middleware('auth:sanctum');
 // });
 
-// Route::controller(AuthController::class)->group(function() {
-//     Route::post('register', 'register');
-//     Route::post('login', 'login');
-//     Route::post('logout', 'logout')->middleware('auth:sanctum');
-// });
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -56,15 +45,6 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('rooms', [RoomController::class, 'index'])->name('rooms.index');
 Route::get('rooms/{room}', [RoomController::class, 'show'])->name('rooms.show');
-
-// Route::patch('/users/{id}', function ($id) {
-//     Log::info('Route PATCH /users/{id} atteinte avec ID: ' . $id);
-//     return 'Route atteinte';
-// });
-
-// Route::middleware('auth:sanctum', 'verified')->group(function () {
-//     Route::patch('/users/{id}', function(Request $request){[ProfileController::class, 'update'];});
-// });
 
 Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(function () {
     Route::get('/api', function () {
@@ -77,6 +57,7 @@ Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(funct
 Route::middleware('auth:sanctum', 'verified')->group(function () {
     // Route::resources('/users', [ProfileController::class, 'store']);
     // Route::post('/users/{id}', [ProfileController::class, 'update']);
+    Route::get('/check-auth', [AuthController::class, 'checkAuth'])->name('check-auth');
     Route::get('/users/{id}', [ProfileController::class, 'show'])->name('profile.show');
     Route::patch('/users/{id}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');

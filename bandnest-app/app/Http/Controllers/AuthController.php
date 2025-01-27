@@ -95,4 +95,19 @@ class AuthController extends Controller
         ], 201);
     }
 
+    public function checkAuth(Request $request)
+    {
+        $user = $request->user();
+        // Retourner les informations utilisateur
+        return response()->json([
+            'message' => 'User is authenticated',
+            'user' => [
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                // Ajoute d'autres champs si nécessaire
+            ]
+        ]);
+    }
+
 }
