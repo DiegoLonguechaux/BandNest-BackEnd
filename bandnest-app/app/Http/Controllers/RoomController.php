@@ -8,6 +8,7 @@ use App\Http\Resources\RoomResource;
 use App\Models\Room;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Gate;
 
 class RoomController extends Controller
 {
@@ -16,6 +17,7 @@ class RoomController extends Controller
      */
     public function index()
     {
+        Gate::authorize('viewAny', Room::class);
         return RoomResource::collection(
             Room::with(['structure', 'country', 'photos', 'materials'])->paginate()
         );

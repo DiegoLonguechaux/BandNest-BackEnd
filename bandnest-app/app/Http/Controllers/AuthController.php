@@ -82,7 +82,7 @@ class AuthController extends Controller
         Auth::login($user);
 
         // Créer un token Sanctum pour l'utilisateur
-        $token = $user->createToken('MyAppToken')->plainTextToken;
+        $token = $user->createToken('auth_token')->plainTextToken;
 
         // Retourner la réponse avec le token
         return response()->json([
