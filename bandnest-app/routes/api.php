@@ -55,12 +55,10 @@ Route::middleware(['auth:sanctum', 'verified', 'role:super_admin'])->group(funct
 });
 
 Route::middleware('auth:sanctum', 'verified')->group(function () {
-    // Route::resources('/users', [ProfileController::class, 'store']);
-    // Route::post('/users/{id}', [ProfileController::class, 'update']);
     Route::get('/check-auth', [AuthController::class, 'checkAuth'])->name('check-auth');
-    Route::get('/users/{id}', [ProfileController::class, 'show'])->name('profile.show');
-    Route::patch('/users/{id}', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/users/{id}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/me', [ProfileController::class, 'show'])->name('profile.show');
+    Route::patch('/me/update', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/me/destroy', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::apiResource('bands', BandController::class);
     Route::apiResource('bookings', BookingController::class);
     Route::apiResource('countries', CountrieController::class);

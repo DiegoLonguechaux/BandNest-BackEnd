@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\StoreProfileRequest;
 use App\Http\Requests\StoreStructureRequest;
+use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Resources\ProfileResource;
 use App\Models\User;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -41,7 +42,7 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request, $id)
+    public function update(UpdateProfileRequest $request)
     {
         // dd($request);
         // $user = User::findOrFail($id);
