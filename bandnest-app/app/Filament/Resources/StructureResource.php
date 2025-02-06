@@ -28,6 +28,7 @@ class StructureResource extends Resource
                 Forms\Components\TextInput::make('address')->required(),
                 Forms\Components\TextInput::make('city')->required(),
                 Forms\Components\TextInput::make('zip_code')->required(),
+                Forms\Components\TextInput::make('country')->required(),
                 Forms\Components\Select::make('owner_id')
                     ->relationship('owner', 'firstname', function ($query) {
                         return $query->select(['id', 'firstname', 'lastname']);
@@ -35,10 +36,6 @@ class StructureResource extends Resource
                     ->getOptionLabelFromRecordUsing(fn ($record) => $record->firstname . ' ' . $record->lastname) // Concatenate firstname and lastname
                     ->required()
                     ->label('Owner'),
-                Forms\Components\Select::make('country_id')
-                    ->relationship('country', 'name')
-                    ->required()
-                    ->label('Country'),
                 Forms\Components\Select::make('rooms')
                     ->multiple()
                     ->relationship('rooms', 'name')                 
@@ -58,8 +55,7 @@ class StructureResource extends Resource
                 Tables\Columns\TextColumn::make('address')->sortable(),
                 Tables\Columns\TextColumn::make('city')->sortable(),
                 Tables\Columns\TextColumn::make('zip_code')->sortable(),
-                Tables\Columns\TextColumn::make('country.name')
-                    ->label('Country'),
+                Tables\Columns\TextColumn::make('country')->sortable(),
             ])
             ->filters([
                 //

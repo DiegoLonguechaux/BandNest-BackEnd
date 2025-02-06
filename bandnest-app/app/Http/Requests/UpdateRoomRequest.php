@@ -23,7 +23,8 @@ class UpdateRoomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'structure_id' => ['required', Rule::exists('structures', 'id')],
+            'structure' => ['required', 'array'],
+            'structure.id' => ['required', Rule::exists('structures', 'id')],
             'name' => ['required', 'string', 'max:255'],
             'size' => ['required', 'numeric', 'min:0'],
             'description' => ['nullable', 'string'],
@@ -31,7 +32,7 @@ class UpdateRoomRequest extends FormRequest
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
-            'country_id' => ['required', Rule::exists('countries', 'id')],
+            'country' => ['required', 'string', 'max:255'],
             'materials' => ['nullable', 'array'],
             'materials.*' => [Rule::exists('materials', 'id')],
         ];

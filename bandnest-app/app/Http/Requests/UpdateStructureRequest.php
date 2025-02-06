@@ -33,7 +33,7 @@ class UpdateStructureRequest extends FormRequest
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
-            'country_id' => ['required', Rule::exists('countries', 'id')],
+            'country' => ['required', 'string', 'max:255'],
             'owner_id' => ['required', Rule::exists('users', 'id')],
         ];
     }

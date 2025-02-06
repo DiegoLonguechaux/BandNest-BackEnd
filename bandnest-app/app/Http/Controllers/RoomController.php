@@ -19,7 +19,7 @@ class RoomController extends Controller
     {
         Gate::authorize('viewAny', Room::class);
         return RoomResource::collection(
-            Room::with(['structure', 'country', 'photos', 'materials'])->paginate()
+            Room::with(['structure', 'photos', 'materials'])->paginate()
         );
     }
 
@@ -43,7 +43,7 @@ class RoomController extends Controller
         if (isset($request->validated()['materials'])) {
             $room->materials()->sync($request->validated()['materials']);
         }
-        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
+        return RoomResource::make($room->load(['structure', 'photos', 'materials']));
     }
 
     /**
@@ -51,7 +51,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
+        return RoomResource::make($room->load(['structure', 'photos', 'materials']));
     }
 
     /**
@@ -75,7 +75,7 @@ class RoomController extends Controller
             $room->materials()->sync($request->validated()['materials']);
         }
     
-        return RoomResource::make($room->load(['structure', 'country', 'photos', 'materials']));
+        return RoomResource::make($room->load(['structure', 'photos', 'materials']));
     }
 
     /**

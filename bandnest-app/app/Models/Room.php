@@ -37,7 +37,7 @@ class Room extends Model
         'address',
         'city',
         'zip_code',
-        'country_id',
+        'country',
     ];
 
     /**
@@ -91,13 +91,5 @@ class Room extends Model
     public function materials()
     {
         return $this->belongsToMany(Material::class, 'room_materials');
-    }
-
-    /**
-     * Get the country associated with the structure.
-     */
-    public function country()
-    {
-        return $this->belongsTo(Countrie::class, 'country_id');
     }
 }

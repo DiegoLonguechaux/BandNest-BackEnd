@@ -34,7 +34,7 @@ class Structure extends Model
         'address',
         'city',
         'zip_code',
-        'country_id',
+        'country',
         'owner_id',
     ];
 
@@ -55,14 +55,6 @@ class Structure extends Model
     public function owner()
     {
         return $this->belongsTo(User::class, 'owner_id');
-    }
-
-    /**
-     * Get the country associated with the structure.
-     */
-    public function country()
-    {
-        return $this->belongsTo(Countrie::class, 'country_id');
     }
 
     /**

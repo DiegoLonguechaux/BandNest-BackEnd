@@ -17,7 +17,7 @@ class StructureController extends Controller
     public function index()
     {
         return StructureResource::collection(
-            Structure::with(['owner', 'country', 'rooms', 'photos'])->paginate()
+            Structure::with(['owner', 'rooms', 'photos'])->paginate()
         );
     }
 
@@ -38,7 +38,7 @@ class StructureController extends Controller
         
         $structure = Structure::create($request->validated());
 
-        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
+        return StructureResource::make($structure->load(['owner', 'rooms', 'photos']));
     }
 
     /**
@@ -46,7 +46,7 @@ class StructureController extends Controller
      */
     public function show(Structure $structure)
     {
-        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
+        return StructureResource::make($structure->load(['owner', 'rooms', 'photos']));
     }
 
     /**
@@ -66,7 +66,7 @@ class StructureController extends Controller
 
         $structure->update($request->validated());
 
-        return StructureResource::make($structure->load(['owner', 'country', 'rooms', 'photos']));
+        return StructureResource::make($structure->load(['owner', 'rooms', 'photos']));
     }
 
     /**

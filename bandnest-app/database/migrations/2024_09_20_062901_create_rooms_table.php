@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('zip_code');
-            $table->foreignId('country_id')->constrained('countries');
+            $table->string('country');
             $table->timestamps();
             $table->timestamp('deleted_at')->nullable();
         });

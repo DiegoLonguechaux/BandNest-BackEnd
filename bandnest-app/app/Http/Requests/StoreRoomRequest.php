@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Countrie;
 use App\Models\Material;
 use App\Models\Structure;
 use Illuminate\Foundation\Http\FormRequest;
@@ -34,7 +33,7 @@ class StoreRoomRequest extends FormRequest
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
-            'country_id' => ['required', Rule::exists(Countrie::class, 'id')],
+            'country' => ['required', 'string', 'max:255'],
             'materials' => ['nullable', 'array'],
             'materials.*' => [Rule::exists(Material::class, 'id')]
         ];
