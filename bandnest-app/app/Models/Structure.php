@@ -5,20 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Patch;
-use ApiPlatform\Metadata\Post;
 
-// #[ApiResource(
-//     operations: [
-//         new Get(),
-//         new Post(),
-//         new GetCollection(),
-//         new Patch(),
-//     ]
-// )]
 class Structure extends Model
 {
     use HasFactory, SoftDeletes;
