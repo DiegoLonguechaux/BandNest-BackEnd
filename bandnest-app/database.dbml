@@ -1,0 +1,356 @@
+Table "band_genres" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "band_id" "bigint unsigned" [not null]
+  "genre_id" "bigint unsigned" [not null]
+}
+
+Table "bands" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "description" text
+  "logo" text
+  "created_at" timestamp
+  "updated_at" timestamp
+  "deleted_at" timestamp
+}
+
+Table "bookings" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "user_id" "bigint unsigned" [not null]
+  "room_id" "bigint unsigned" [not null]
+  "band_id" "bigint unsigned" [not null]
+  "start" date [not null]
+  "end" date [not null]
+  "total_price" decimal(8,2)
+  "state" varchar(255)
+  "created_at" timestamp
+  "updated_at" timestamp
+  "deleted_at" timestamp
+}
+
+Table "cache" {
+  "key" varchar(255) [pk, not null]
+  "value" mediumtext [not null]
+  "expiration" int [not null]
+}
+
+Table "cache_locks" {
+  "key" varchar(255) [pk, not null]
+  "owner" varchar(255) [not null]
+  "expiration" int [not null]
+}
+
+Table "failed_jobs" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "uuid" varchar(255) [unique, not null]
+  "connection" text [not null]
+  "queue" text [not null]
+  "payload" longtext [not null]
+  "exception" longtext [not null]
+  "failed_at" timestamp [not null, default: `CURRENT_TIMESTAMP`]
+}
+
+Table "genres" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "slug" varchar(255) [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+}
+
+Table "job_batches" {
+  "id" varchar(255) [pk, not null]
+  "name" varchar(255) [not null]
+  "total_jobs" int [not null]
+  "pending_jobs" int [not null]
+  "failed_jobs" int [not null]
+  "failed_job_ids" longtext [not null]
+  "options" mediumtext
+  "cancelled_at" int
+  "created_at" int [not null]
+  "finished_at" int
+}
+
+Table "jobs" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "queue" varchar(255) [not null]
+  "payload" longtext [not null]
+  "attempts" "tinyint unsigned" [not null]
+  "reserved_at" "int unsigned"
+  "available_at" "int unsigned" [not null]
+  "created_at" "int unsigned" [not null]
+
+  Indexes {
+    queue [type: btree, name: "jobs_queue_index"]
+  }
+}
+
+Table "materials" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "state" varchar(255)
+  "created_at" timestamp
+  "updated_at" timestamp
+}
+
+Table "migrations" {
+  "id" "int unsigned" [pk, not null, increment]
+  "migration" varchar(255) [not null]
+  "batch" int [not null]
+}
+
+Table "model_has_permissions" {
+  "permission_id" "bigint unsigned" [not null]
+  "model_type" varchar(255) [not null]
+  "model_id" "bigint unsigned" [not null]
+
+  Indexes {
+    (model_id, model_type) [type: btree, name: "model_has_permissions_model_id_model_type_index"]
+    (permission_id, model_id, model_type) [pk, name: "PRIMARY"]
+  }
+}
+
+Table "model_has_roles" {
+  "role_id" "bigint unsigned" [not null]
+  "model_type" varchar(255) [not null]
+  "model_id" "bigint unsigned" [not null]
+
+  Indexes {
+    (model_id, model_type) [type: btree, name: "model_has_roles_model_id_model_type_index"]
+    (role_id, model_id, model_type) [pk, name: "PRIMARY"]
+  }
+}
+
+Table "notifications" {
+  "id" char(36) [pk, not null]
+  "type" varchar(255) [not null]
+  "notifiable_type" varchar(255) [not null]
+  "notifiable_id" "bigint unsigned" [not null]
+  "data" text [not null]
+  "read_at" timestamp
+  "created_at" timestamp
+  "updated_at" timestamp
+
+  Indexes {
+    (notifiable_type, notifiable_id) [type: btree, name: "notifications_notifiable_type_notifiable_id_index"]
+  }
+}
+
+Table "operating_hours" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "room_id" "bigint unsigned" [not null]
+  "day" varchar(255) [not null]
+  "start" time [not null]
+  "end" time [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+}
+
+Table "password_reset_tokens" {
+  "email" varchar(255) [pk, not null]
+  "token" varchar(255) [not null]
+  "created_at" timestamp
+}
+
+Table "permissions" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "guard_name" varchar(255) [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+
+  Indexes {
+    (name, guard_name) [unique, name: "permissions_name_guard_name_unique"]
+  }
+}
+
+Table "personal_access_tokens" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "tokenable_type" varchar(255) [not null]
+  "tokenable_id" "bigint unsigned" [not null]
+  "name" varchar(255) [not null]
+  "token" varchar(64) [unique, not null]
+  "abilities" text
+  "last_used_at" timestamp
+  "expires_at" timestamp
+  "created_at" timestamp
+  "updated_at" timestamp
+
+  Indexes {
+    (tokenable_id, tokenable_type) [type: btree, name: "personal_access_tokens_tokenable_type_tokenable_id_index"]
+  }
+}
+
+Table "photos" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "url" text
+  "room_id" "bigint unsigned" [not null]
+  "structure_id" "bigint unsigned" [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+}
+
+Table "role_has_permissions" {
+  "permission_id" "bigint unsigned" [not null]
+  "role_id" "bigint unsigned" [not null]
+
+  Indexes {
+    (permission_id, role_id) [pk, name: "PRIMARY"]
+  }
+}
+
+Table "roles" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "guard_name" varchar(255) [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+
+  Indexes {
+    (name, guard_name) [unique, name: "roles_name_guard_name_unique"]
+  }
+}
+
+Table "room_materials" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "room_id" "bigint unsigned" [not null]
+  "material_id" "bigint unsigned" [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+}
+
+Table "rooms" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "structure_id" "bigint unsigned" [not null]
+  "name" varchar(255) [not null]
+  "size" decimal(8,2)
+  "description" text
+  "price_per_hour" decimal(8,2)
+  "address" varchar(255) [not null]
+  "city" varchar(255) [not null]
+  "zip_code" varchar(255) [not null]
+  "country" varchar(255) [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+  "deleted_at" timestamp
+}
+
+Table "sessions" {
+  "id" varchar(255) [pk, not null]
+  "user_id" "bigint unsigned"
+  "ip_address" varchar(45)
+  "user_agent" text
+  "payload" longtext [not null]
+  "last_activity" int [not null]
+
+  Indexes {
+    last_activity [type: btree, name: "sessions_last_activity_index"]
+    user_id [type: btree, name: "sessions_user_id_index"]
+  }
+}
+
+Table "structures" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "name" varchar(255) [not null]
+  "description" text
+  "address" varchar(255) [not null]
+  "city" varchar(255) [not null]
+  "zip_code" varchar(255) [not null]
+  "country" varchar(255) [not null]
+  "owner_id" "bigint unsigned" [not null]
+  "created_at" timestamp
+  "updated_at" timestamp
+  "deleted_at" timestamp
+}
+
+Table "telescope_entries" {
+  "sequence" "bigint unsigned" [pk, not null, increment]
+  "uuid" char(36) [unique, not null]
+  "batch_id" char(36) [not null]
+  "family_hash" varchar(255)
+  "should_display_on_index" tinyint(1) [not null, default: 1]
+  "type" varchar(20) [not null]
+  "content" longtext [not null]
+  "created_at" datetime
+
+  Indexes {
+    batch_id [type: btree, name: "telescope_entries_batch_id_index"]
+    created_at [type: btree, name: "telescope_entries_created_at_index"]
+    family_hash [type: btree, name: "telescope_entries_family_hash_index"]
+    (type, should_display_on_index) [type: btree, name: "telescope_entries_type_should_display_on_index_index"]
+  }
+}
+
+Table "telescope_entries_tags" {
+  "entry_uuid" char(36) [not null]
+  "tag" varchar(255) [not null]
+
+  Indexes {
+    tag [type: btree, name: "telescope_entries_tags_tag_index"]
+    (entry_uuid, tag) [pk, name: "PRIMARY"]
+  }
+}
+
+Table "telescope_monitoring" {
+  "tag" varchar(255) [pk, not null]
+}
+
+Table "user_bands" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "user_id" "bigint unsigned" [not null]
+  "band_id" "bigint unsigned" [not null]
+}
+
+Table "users" {
+  "id" "bigint unsigned" [pk, not null, increment]
+  "firstname" varchar(255) [not null]
+  "lastname" varchar(255) [not null]
+  "name" varchar(255) [not null]
+  "date_of_birth" date
+  "email" varchar(255) [unique, not null]
+  "email_verified_at" timestamp
+  "password" varchar(255) [not null]
+  "profile_photo" text
+  "remember_token" varchar(100)
+  "created_at" timestamp
+  "updated_at" timestamp
+  "deleted_at" timestamp
+}
+
+Ref "band_genres_genre_id_foreign":"genres"."id" < "band_genres"."genre_id"
+
+Ref "band_genres_band_id_foreign":"bands"."id" < "band_genres"."band_id"
+
+Ref "bookings_band_id_foreign":"bands"."id" < "bookings"."band_id"
+
+Ref "bookings_room_id_foreign":"rooms"."id" < "bookings"."room_id"
+
+Ref "bookings_user_id_foreign":"users"."id" < "bookings"."user_id"
+
+Ref "model_has_permissions_permission_id_foreign":"permissions"."id" < "model_has_permissions"."permission_id" [delete: cascade]
+
+Ref "model_has_roles_role_id_foreign":"roles"."id" < "model_has_roles"."role_id" [delete: cascade]
+
+Ref "operating_hours_room_id_foreign":"rooms"."id" < "operating_hours"."room_id"
+
+Ref "photos_structure_id_foreign":"structures"."id" < "photos"."structure_id"
+
+Ref "photos_room_id_foreign":"rooms"."id" < "photos"."room_id"
+
+Ref "role_has_permissions_permission_id_foreign":"permissions"."id" < "role_has_permissions"."permission_id" [delete: cascade]
+
+Ref "role_has_permissions_role_id_foreign":"roles"."id" < "role_has_permissions"."role_id" [delete: cascade]
+
+Ref "room_materials_material_id_foreign":"materials"."id" < "room_materials"."material_id"
+
+Ref "room_materials_room_id_foreign":"rooms"."id" < "room_materials"."room_id"
+
+Ref "rooms_structure_id_foreign":"structures"."id" < "rooms"."structure_id"
+
+Ref "structures_owner_id_foreign":"users"."id" < "structures"."owner_id"
+
+Ref "telescope_entries_tags_entry_uuid_foreign":"telescope_entries"."uuid" < "telescope_entries_tags"."entry_uuid" [delete: cascade]
+
+Ref "user_bands_band_id_foreign":"bands"."id" < "user_bands"."band_id"
+
+Ref "user_bands_user_id_foreign":"users"."id" < "user_bands"."user_id"
