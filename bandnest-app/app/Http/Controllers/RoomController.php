@@ -51,7 +51,7 @@ class RoomController extends Controller
      */
     public function show(Room $room)
     {
-        return RoomResource::make($room->load(['structure', 'photos', 'materials']));
+        return RoomResource::make($room->load(['structure', 'photos']));
     }
 
     /**

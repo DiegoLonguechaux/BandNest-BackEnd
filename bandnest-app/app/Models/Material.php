@@ -17,6 +17,7 @@ class Material extends Model
     protected $fillable = [
         'name',
         'state',
+        'room_id'
     ];
 
     /**
@@ -29,8 +30,12 @@ class Material extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function rooms()
+    // public function rooms()
+    // {
+    //     return $this->belongsToMany(Room::class, 'room_materials');
+    // }
+    public function room()
     {
-        return $this->belongsToMany(Room::class, 'room_materials');
+        return $this->belongsTo(Room::class);
     }
 }

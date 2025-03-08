@@ -18,8 +18,9 @@ class OperatingHourResource extends JsonResource
             'id' => $this->id,
             'room' => $this->room,
             'day' => $this->day,
-            'start' => $this->start->format('H:i'),
-            'end' => $this->end->format('H:i'),
+            'start' => $this->start ? $this->start->format('H:i') : null,
+            'end' => $this->end ? $this->end->format('H:i') : null,
+            'closed' => $this->closed,
             'created_at' => $this->created_at->toDateTimeString(),
             'updated_at' => $this->updated_at->toDateTimeString(),
         ];

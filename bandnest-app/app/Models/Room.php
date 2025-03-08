@@ -77,6 +77,6 @@ class Room extends Model
      */
     public function materials()
     {
-        return $this->belongsToMany(Material::class, 'room_materials');
+        return $this->hasMany(Material::class, 'room_id');
     }
 }

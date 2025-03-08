@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id()->primary();
             $table->string('name');
             $table->string('state')->nullable();
+            $table->foreignId('room_id')->constrained('rooms');
             $table->timestamps();
         });
     }

@@ -24,9 +24,10 @@ class StoreOperatingHourRequest extends FormRequest
     {
         return [
             'room_id' => ['required', Rule::exists('rooms', 'id')],
-            'day' => ['required', 'string', Rule::in(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'])],
-            'start' => ['required', 'date_format:H:i'], 
-            'end' => ['required', 'date_format:H:i', 'after:start'],
+            'day' => ['required', 'string', Rule::in(['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'])],
+            'start' => ['nullable', 'date_format:H:i'], 
+            'end' => ['nullable', 'date_format:H:i', 'after:start'],
+            'closed' => ['required', 'boolean']
         ];
     }
 }

@@ -27,10 +27,11 @@ class UpdateOperatingHourRequest extends FormRequest
             'day' => [
                 'required',
                 'string',
-                Rule::in(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']),
+                Rule::in(['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']),
             ],
-            'start' => ['required', 'date_format:H:i'],
-            'end' => ['required', 'date_format:H:i', 'after:start'],
+            'start' => ['nullable', 'date_format:H:i'],
+            'end' => ['nullable', 'date_format:H:i', 'after:start'],
+            'closed' => ['required', 'boolean']
         ];
     }
 }

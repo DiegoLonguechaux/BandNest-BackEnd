@@ -26,12 +26,17 @@ class RoomResource extends JsonResource
             'zip_code' => $this->zip_code,
             'country' => $this->country,
             'photos' => $this->photos,
-            'materials' => $this->materials,
+            'materials' => $this->materials->map(function ($material) {
+                return [
+                    'name' => $material->name,
+                ];
+            }),
             'operating_hours' => $this->operatingHours->map(function ($hour) {
                 return [
                     'day' => $hour->day,
                     'start' => $hour->start ?: null,
                     'end' => $hour->end ?: null,
+                    'closed' => $hour->closed
                 ];
             }),
             'created_at' => $this->created_at->toDateTimeString(),

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('day');
             $table->time('start');
             $table->time('end');
+            $table->boolean();
             $table->timestamps();
         });
     }

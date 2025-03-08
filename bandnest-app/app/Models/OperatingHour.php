@@ -19,6 +19,7 @@ class OperatingHour extends Model
         'day',
         'start',
         'end',
+        'closed',
     ];
 
     /**

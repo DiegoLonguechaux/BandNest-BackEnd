@@ -34,6 +34,9 @@ class UpdateMaterialRequest extends FormRequest
                 'string',
                 Rule::in(['pending', 'confirmed', 'cancelled']),
             ],
+            'room' => ['required', 'array'],
+            'room.id' => ['required', Rule::exists('rooms', 'id')],
+            // 'room_id' => ['required', Rule::exists('rooms', 'id')],
         ];
     }
 }

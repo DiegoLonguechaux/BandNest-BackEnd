@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Room;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +25,8 @@ class StoreMaterialRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string', 'max:255', 'unique:materials,name'],
-            'state' => ['required', 'string', Rule::in(['pending', 'confirmed', 'cancelled'])],
+            'state' => ['nullable', 'string', Rule::in(['pending', 'confirmed', 'cancelled'])],
+            'room_id' => ['required', 'integer', 'exists:rooms,id'],
         ];
     }
 }

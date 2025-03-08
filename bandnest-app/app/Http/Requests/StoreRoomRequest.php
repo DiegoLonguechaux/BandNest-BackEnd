@@ -34,8 +34,8 @@ class StoreRoomRequest extends FormRequest
             'city' => ['required', 'string', 'max:255'],
             'zip_code' => ['required', 'string', 'max:20'],
             'country' => ['required', 'string', 'max:255'],
-            'materials' => ['nullable', 'array'],
-            'materials.*' => [Rule::exists(Material::class, 'id')]
+            // 'materials' => ['nullable', 'array'],
+            // 'materials.*' => [Rule::exists(Material::class, 'id')]
         ];
     }
 }

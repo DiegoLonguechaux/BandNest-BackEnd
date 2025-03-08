@@ -15,7 +15,7 @@ class MaterialController extends Controller
      */
     public function index()
     {
-        return MaterialResource::collection( Material::with('rooms')->paginate());
+        return MaterialResource::collection( Material::with('room')->paginate());
     }
 
     /**
@@ -37,7 +37,7 @@ class MaterialController extends Controller
 
         $material = Material::create($validated);
 
-        return MaterialResource::make($material->load('rooms'));
+        return MaterialResource::make($material->load('room'));
     }
 
     /**
@@ -45,7 +45,7 @@ class MaterialController extends Controller
      */
     public function show(Material $material)
     {
-        return MaterialResource::make($material->load('rooms'));
+        return MaterialResource::make($material->load('room'));
     }
 
     /**
@@ -67,7 +67,7 @@ class MaterialController extends Controller
 
         $material->update($validated);
 
-        return MaterialResource::make($material->load('rooms'));
+        return MaterialResource::make($material->load('room'));
     }
 
     /**
