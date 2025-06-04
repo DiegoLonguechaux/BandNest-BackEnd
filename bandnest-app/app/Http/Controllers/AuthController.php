@@ -26,14 +26,10 @@ class AuthController extends Controller
         // Récupérer l'utilisateur authentifié
         $user = Auth::user();
 
-        // Créer un token pour l'utilisateur
-        $token = $user->createToken('auth_token')->plainTextToken;
-
         // Retourner le token en réponse JSON
         return response()->json([
             'message' => 'Login successful',
             'authorisation' => [
-                'token' => $token,
                 'type' => 'bearer',
             ]
         ], 200);
@@ -79,17 +75,13 @@ class AuthController extends Controller
         $user->sendEmailVerificationNotification();
 
         // Connecter l'utilisateur
-        Auth::login($user);
-
-        // Créer un token Sanctum pour l'utilisateur
-        $token = $user->createToken('auth_token')->plainTextToken;
+        // Auth::login($user);
 
         // Retourner la réponse avec le token
         return response()->json([
             'message' => 'User registered successfully. Please check your email to verify your account.',
             'user' => $user,
             'authorisation' => [
-                'token' => $token,
                 'type' => 'bearer',
             ]
         ], 201);
