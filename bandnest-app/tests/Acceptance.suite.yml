@@ -7,7 +7,9 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://localhost:5173
+            url: http://bandnest-front:4200
+            host: selenium
+            port: 4444
             browser: chrome
             window_size: 1920x1080
             capabilities:

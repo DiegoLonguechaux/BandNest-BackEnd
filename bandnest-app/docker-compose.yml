@@ -6,6 +6,7 @@ services:
             args:
                 WWWGROUP: '${WWWGROUP}'
         image: 'sail-8.3/app'
+        container_name: bandnest-back
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         ports:
@@ -94,12 +95,17 @@ services:
             - sail
     selenium:
         image: selenium/standalone-chromium
+        container_name: selenium
         extra_hosts:
             - 'host.docker.internal:host-gateway'
         volumes:
             - '/dev/shm:/dev/shm'
         networks:
             - sail
+        # ports: 
+        #     - "4444:4444"
+        #     - "5900:5900"
+        # shm_size: '2gb'
     phpmyadmin:
         depends_on:
             - mysql
@@ -115,10 +121,13 @@ services:
         build: 
             context: '../../BandNest-FrontEnd/BandNest-FrontEnd'
             dockerfile: Dockerfile
+        container_name: bandnest-front
         volumes:
             - ../../BandNest-FrontEnd/BandNest-FrontEnd:/app
         ports:
             - 4200:4200
+        networks:
+            - sail
 networks:
     sail:
         driver: bridge
